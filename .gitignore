@@ -1,0 +1,6 @@
+/intro-section-with-dropdown-navigation-main
+
+node_modules/
+dist/
+.env
+.env.*

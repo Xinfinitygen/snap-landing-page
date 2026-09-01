@@ -1,0 +1,16 @@
+{
+  "name": "snap-landing-page",
+  "version": "1.0.0",
+  "main": "script.js","scripts": {
+  "dev": "vite",
+  "build": "vite",
+  "preview": "vite preview"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "vite": "^8.2.2"
+  }
+}
