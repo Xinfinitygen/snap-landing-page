@@ -140,7 +140,7 @@ nav {
   color: black;
 }
 
-/* Aligning dropdown boxes cleanly beneath their text headers */
+/* Aligning dropdown boxes cleanly beneath their text headers  */
 .nav-item:nth-of-type(1) .dropdown-menu {
   right: 0;
   min-width: 160px;
