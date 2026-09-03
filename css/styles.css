@@ -3,84 +3,267 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #fafafa;
 }
+
+/* --===== Navigation =====-- */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  flex-wrap: nowrap;
+  padding: 20px 40px;
+  width: 100%;
+
+  font-family: "Epilogue", sans-serif;
 }
+/* Grouping Logo + Main Links together on the left */
 .nav-primary-li {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 50px;
+  /* Dynamic spacing between "Snap" logo and the first menu link */
+  gap: clamp(1.5rem, 4vw, 4rem);
+  flex-grow: 1;
 }
-.nav-primary-li > h2 {
-    padding: 20px;
+
+.nav-primary-li h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #141414;
 }
+
+/* The horizontal menu container */
 .nav-primary-li > ul {
   display: flex;
   list-style: none;
-  gap: 4rem;
+  align-items: center;
+  /* Automatically shrinks menu spaces */
+  gap: clamp(1rem, 3vw, 2.5rem);
+  margin: 0;
+  padding: 0;
 }
-.nav-primary-li > ul > li > a {
-  text-decoration: none;
-}
+
 .nav-item {
   position: relative;
 }
-.nav-item > ul > li {
-  position: relative;
+
+/* Targeting both the dropdown buttons AND standalone links */
+.nav-primary-li > ul > li > a,
+.dropdown-toggle {
+  background: none;
+  border: none;
+  text-decoration: none;
+  color: hsl(0, 0%, 41%);
+  font-size: 15px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: color 0.2s ease;
 }
+
+.nav-primary-li > ul > li > a:hover,
+.dropdown-toggle:hover {
+  color: #141414;
+}
+
+/* --===== Right Side Auth Buttons =====-- */
+.nav-actions {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: clamp(1rem, 2vw, 2rem);
+  align-items: center;
+}
+
+.nav-actions .login-btn {
+  text-decoration: none;
+  color: hsl(0, 0%, 41%);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-actions .login-btn:hover {
+  color: hsl(0, 0%, 8%);
+}
+
+.nav-actions .register-btn {
+  position: relative;
+  background-color: transparent;
+  color: hsl(0, 0%, 41%);
+  border: 2px solid hsl(0, 0%, 41%);
+  padding: 12px 24px;
+  border-radius: 14px;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 1;
+  transition:
+    color 0.4s ease,
+    border-color 0.4s ease;
+}
+.nav-actions .register-btn span {
+  color: hsl(0, 0%, 41%);
+  font-weight: 700;
+  font-size: 0.95rem;
+  position: relative;
+  z-index: 2;
+}
+.nav-actions .register-btn::before {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: -10%;
+  width: 120%;
+  height: 1000%;
+  background-color: #151515;
+  border-radius: 40%;
+  z-index: 1;
+  transition:
+    top 0.8s ease,
+    transform 0.8s ease;
+}
+.nav-actions .register-btn:hover::before {
+  top: -200%;
+  transform: rotate(180deg);
+}
+.nav-actions .register-btn:hover {
+  color: #141414;
+  border-color: #141414;
+}
+
+/* --===== Dropdown Menus =====-- */
 .dropdown-menu {
   position: absolute;
   top: 100%;
-
   display: none;
   padding: 24px;
   z-index: 10;
   list-style: none;
-
   background: white;
   border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
 }
+
+.dropdown-menu.active {
+  display: block;
+}
+
 .dropdown-menu > li > a {
   text-decoration: none;
-  color: hsl(0, 0%, 41%); /* Matches the designer's muted gray text color */
+  color: hsl(0, 0%, 41%);
   font-size: 14px;
   display: flex;
   align-items: center;
   gap: 16px;
   padding: 6px 0;
-}
-.dropdown-menu.active {
-  display: block;
-}
-.nav-item:nth-of-type(1) .dropdown-menu {
-  right: 0;
-  min-width: 160px; /* Gives the icons and text breathing room */
-  margin-top: 16px; /* Clean gap below the button instead of a global margin */
-}
-
-.nav-item:nth-of-type(2) .dropdown-menu {
-  left: 0; /* Forces it to expand rightward from the 'Company' text */
-  right: auto; /* Overrides the default right alignment */
-  min-width: 130px;
-  margin-top: 16px;
-}
-.dropdown-menu > li:last-child > a {
-  margin-bottom: 0; /* Prevents awkward extra padding at the bottom box border */
+  white-space: nowrap;
 }
 
 .dropdown-menu > li > a:hover {
-  color: black; /* Quick usability feedback layer */
+  color: black;
 }
 
-.dropdown-menu.active {
+/* Aligning dropdown boxes cleanly beneath their text headers  */
+.nav-item:nth-of-type(1) .dropdown-menu {
+  right: 0;
+  min-width: 160px;
+  margin-top: 16px;
+}
+
+.nav-item:nth-of-type(2) .dropdown-menu {
+  left: 0;
+  right: auto;
+  min-width: 130px;
+  margin-top: 16px;
+}
+
+/* -===== HERO SECTION LAYOUT =====--*/
+
+.hero-section {
+  display: flex;
+  align-items: flex-end;        
+  justify-content: space-between;
+  max-width: 1140px;
+  margin: 40px auto 0 auto;      
+  padding: 0 40px 40px 40px;
+  gap: clamp(20px, 4vw, 80px);   /* Dynamic shrinking gap so columns never collide */
+  width: 100%;
+}
+
+.hero-description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;                       /* Gives left column fluid space */
+  max-width: 540px;              /* REMOVED min-width to stop layout overflow distortion */
+  text-align: left;
+}
+
+.hero-description h1 {
+  font-size: clamp(2.8rem, 5vw, 5rem); /* Scalable header text */
+  line-height: 1;
+  font-weight: 700;
+  color: #141414;
+  margin-bottom: 40px;
+}
+
+.hero-description p {
+  color: hsl(0, 0%, 41%);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 440px; 
+  margin-bottom: 50px;
+}
+
+.learn-more-btn {
+  background-color: #151515;
+  color: #fafafa;                
+  border: 1px solid #151515;
+  padding: 16px 32px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.learn-more-btn:hover {
+  background-color: transparent;
+  color: #151515;
+  border-color: #151515;
+}
+
+.hero-img-container {
+  flex: 1;                       
+  max-width: 480px;              
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;    
+}
+
+.hero-img-container img {
+  width: 100%;                
+  height: auto;
   display: block;
+}
+
+.footer-imgs {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  margin-top: 80px;              /* Pushes brand sponsor area cleanly down */
+  gap: 20px;
+  width: 100%;
+}
+
+.footer-imgs img {
+  height: auto;
+  max-height: 18px;              
+  object-fit: contain;
 }
