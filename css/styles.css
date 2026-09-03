@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fafafa;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.nav-primary-li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.nav-primary-li > h2 {
+    padding: 20px;
+}
+.nav-primary-li > ul {
+  display: flex;
+  list-style: none;
+  gap: 4rem;
+}
+.nav-primary-li > ul > li > a {
+  text-decoration: none;
+}
+.nav-item {
+  position: relative;
+}
+.nav-item > ul > li {
+  position: relative;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+
+  display: none;
+  padding: 24px;
+  z-index: 10;
+  list-style: none;
+
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+.dropdown-menu > li > a {
+  text-decoration: none;
+  color: hsl(0, 0%, 41%); /* Matches the designer's muted gray text color */
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 6px 0;
+}
+.dropdown-menu.active {
+  display: block;
+}
+.nav-item:nth-of-type(1) .dropdown-menu {
+  right: 0;
+  min-width: 160px; /* Gives the icons and text breathing room */
+  margin-top: 16px; /* Clean gap below the button instead of a global margin */
+}
+
+.nav-item:nth-of-type(2) .dropdown-menu {
+  left: 0; /* Forces it to expand rightward from the 'Company' text */
+  right: auto; /* Overrides the default right alignment */
+  min-width: 130px;
+  margin-top: 16px;
+}
+.dropdown-menu > li:last-child > a {
+  margin-bottom: 0; /* Prevents awkward extra padding at the bottom box border */
+}
+
+.dropdown-menu > li > a:hover {
+  color: black; /* Quick usability feedback layer */
+}
+
+.dropdown-menu.active {
+  display: block;
+}
