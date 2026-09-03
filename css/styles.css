@@ -17,14 +17,18 @@ nav {
   flex-wrap: nowrap;
   padding: 20px 40px;
   width: 100%;
-}
 
+  font-family: "Epilogue", sans-serif;
+  /* font-optical-sizing: auto;
+ font-style: normal;
+ font-weight: 500; */
+}
 /* Grouping Logo + Main Links together on the left */
 .nav-primary-li {
   display: flex;
   align-items: center;
   /* Dynamic spacing between "Snap" logo and the first menu link */
-  gap: clamp(1.5rem, 4vw, 4rem); 
+  gap: clamp(1.5rem, 4vw, 4rem);
   flex-grow: 1;
 }
 
@@ -40,7 +44,7 @@ nav {
   list-style: none;
   align-items: center;
   /* Automatically shrinks menu spaces */
-  gap: clamp(1rem, 3vw, 2.5rem); 
+  gap: clamp(1rem, 3vw, 2.5rem);
   margin: 0;
   padding: 0;
 }
@@ -152,4 +156,58 @@ nav {
   right: auto;
   min-width: 130px;
   margin-top: 16px;
+}
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 1100px;
+  margin: 90px auto 0 auto;
+  padding: 0 40px;
+  gap: 80px;
+}
+.hero-image-container {
+    max-width: 480px;
+    width: 100%;
+}
+.hero-img-container img {
+  width: 100%;
+ height: auto;
+ display: block;
+}
+.hero-description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 540px;
+  text-align: left;
+}
+.hero-description h1 {
+  font-size: 5rem;
+  line-height: 1;
+  font-weight: 700;
+  color: #141414;
+  margin-bottom: 40px;
+}
+.hero-description p {
+  color: hsl(0, 0%, 41%);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-bottom: 50px;
+}
+.learn-more-btn {
+  background-color: #151515;
+  color: hsl(0, 0%, 41%);
+  border: 1px solid transparent;
+  padding: 16px 32px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.learn-more-btn:hover {
+  background-color: transparent;
+  color: #151515;
+  border-color: #151515;
 }
